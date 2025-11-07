@@ -1,0 +1,32 @@
+name: Node.js CI
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        node-version: [22.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        
+    - run: npm create vite@latest my-vue-app -- --template vue-ts
+    
+    - shell: cmd
+      run: |
+        7z a -tzip "my-vue-app-${{ matrix.node-version }}.zip" "my-vue-app" &&^
+        dir
+        
+    - uses: actions/upload-artifact@v4.6.0
+      with:
+        name: my-vue-app
+        path: "my-vue-app-${{ matrix.node-version }}.zip"
