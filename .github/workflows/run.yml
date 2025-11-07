@@ -21,13 +21,13 @@ jobs:
         
     - run: npm create vite@latest my-vue-app -- --template vue-ts
     
-    - shell: cmd
-      run: |
-        cd my-vue-app &&^
-        7z a -tzip "my-vue-app-${{ matrix.node-version }}.zip" &&^
-        dir
+    # - shell: cmd
+    #   run: |
+    #     cd  &&^
+    #     7z a -tzip "my-vue-app-${{ matrix.node-version }}.zip" &&^
+    #     dir
         
     - uses: actions/upload-artifact@v4.6.0
       with:
-        name: my-vue-app
-        path: "my-vue-app/my-vue-app-${{ matrix.node-version }}.zip"
+        name: "my-vue-app-${{ matrix.node-version }}.zip"
+        path: "my-vue-app"
