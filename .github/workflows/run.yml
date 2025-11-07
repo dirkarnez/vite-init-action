@@ -9,6 +9,7 @@ jobs:
     strategy:
       matrix:
         node-version: [22.x]
+        template: [vanilla-ts, vue-ts, react-ts, svelte-ts, solid-ts]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -19,7 +20,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         
-    - run: npm create vite@latest my-vue-app -- --template vue-ts
+    - run: npm create vite@latest "my-${{ matrix.template }}-app-${{ matrix.node-version }}" -- --template "${{ matrix.template }}"
     
     # - shell: cmd
     #   run: |
@@ -29,5 +30,5 @@ jobs:
         
     - uses: actions/upload-artifact@v4.6.0
       with:
-        name: "my-vue-app-${{ matrix.node-version }}.zip"
-        path: "my-vue-app"
+        name: "my-${{ matrix.template }}-app-${{ matrix.node-version }}.zip"
+        path: "my-${{ matrix.template }}-app-${{ matrix.node-version }}"
