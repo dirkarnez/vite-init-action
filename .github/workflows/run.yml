@@ -2,13 +2,14 @@ name: Node.js CI
 
 on:
   push:
+    paths-ignore: "**/README.md"
 
 jobs:
   build:
     runs-on: windows-latest
     strategy:
       matrix:
-        node-version: [22.x]
+        node-version: [22.x, 23.x, 24.x, 25.x]
         template: [vanilla-ts, vue-ts, react-ts, svelte-ts, solid-ts]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
