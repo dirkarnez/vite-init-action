@@ -23,6 +23,16 @@ jobs:
         
     - run: npm create vite@latest "my-${{ matrix.template }}-app-node-v${{ matrix.node-version }}" -- --template "${{ matrix.template }}"
     
+    - working-directory: "my-${{ matrix.template }}-app-node-v${{ matrix.node-version }}"
+      shell: bash
+      run: |
+        cp ../.gitignore .
+
+    - working-directory: "my-${{ matrix.template }}-app-node-v${{ matrix.node-version }}"
+      shell: bash
+      run: |
+        ls
+    
     # - shell: cmd
     #   run: |
     #     cd  &&^
