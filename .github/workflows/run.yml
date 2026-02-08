@@ -31,7 +31,7 @@ jobs:
     - working-directory: "my-${{ matrix.template }}-app-node-v${{ matrix.node-version }}"
       shell: bash
       run: |
-        ls
+        ls --all
     
     # - shell: cmd
     #   run: |
@@ -41,5 +41,6 @@ jobs:
         
     - uses: actions/upload-artifact@v4.6.0
       with:
+        include-hidden-files: true
         name: "my-${{ matrix.template }}-app-node-v${{ matrix.node-version }}"
         path: "my-${{ matrix.template }}-app-node-v${{ matrix.node-version }}"
