@@ -2,7 +2,7 @@
  * @type {import('vite').UserConfig}
  */
 const config = {
-  base: "/xxx/dist/"
+  base: "/xxx-playground/"
 }
 
 export default config
