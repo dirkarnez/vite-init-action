@@ -38,6 +38,12 @@ jobs:
       run: |
         mkdir -p .vscode
         cp ../.vscode/settings.json ./.vscode
+
+    - working-directory: "my-${{ matrix.template }}-app-node-v${{ matrix.node-version }}"
+      shell: bash
+      run: |
+        mkdir -p .github/workflows
+        cp ../.github/workflows/build.yml ./.github/workflows
         
     - working-directory: "my-${{ matrix.template }}-app-node-v${{ matrix.node-version }}"
       shell: bash
