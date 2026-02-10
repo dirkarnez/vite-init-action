@@ -31,6 +31,17 @@ jobs:
     - working-directory: "my-${{ matrix.template }}-app-node-v${{ matrix.node-version }}"
       shell: bash
       run: |
+        cp ../vite.config.js .
+        
+    - working-directory: "my-${{ matrix.template }}-app-node-v${{ matrix.node-version }}"
+      shell: bash
+      run: |
+        mkdir -p .vscode
+        cp ../.vscode/settings.json ./.vscode
+        
+    - working-directory: "my-${{ matrix.template }}-app-node-v${{ matrix.node-version }}"
+      shell: bash
+      run: |
         ls --all
     
     # - shell: cmd
