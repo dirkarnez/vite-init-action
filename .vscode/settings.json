@@ -1,4 +1,6 @@
 {
+    "workbench.colorTheme": "Dark Modern",
+    "editor.wordWrap": "on",
     "git.path": "${env:USERPROFILE}\\Downloads\\PortableGit\\bin\\git.exe",
     // Controls the rendering size of tabs in characters. 
     // If set to auto, the value will be guessed based on the opened file.
